@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "angular-crud-firebase-b6b1e",
+    "example": "angular-crud-firebase-b6b1e",
+    "staging": "angular-crud-firebase-b6b1e"
+  }
+}
