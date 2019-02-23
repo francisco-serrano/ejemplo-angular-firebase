@@ -7,31 +7,39 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class AuthService {
 
+  private currentUser: User;
+
+  private displayName: Promise<string>;
+  private photoURL: Promise<string>;
+
   constructor(private angularFireAuth: AngularFireAuth) {
     this.angularFireAuth.authState.subscribe(user => {
-      let userItem = null;
-
       if (user) {
-        this.user = user;
-        userItem = JSON.stringify(this.user);
-      }
+        console.log('AuthService: recibio usuario');
 
-      localStorage.setItem('user', userItem);
+        this.currentUser = user;
+        this.displayName = Promise.resolve(user.displayName);
+        this.photoURL = Promise.resolve(user.photoURL);
+      }
     });
   }
 
-  private user: User;
-
-  static getUser(): object {
-    return JSON.parse(localStorage.getItem('user'));
+  public async signIn() {
+    await this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-  public async loginWithGoogle() {
-    return this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-  }
-
-  public async logout() {
-    await this.angularFireAuth.auth.signOut();
+  public async signOut() {
     localStorage.removeItem('user');
+    await this.angularFireAuth.auth.signOut();
+  }
+
+  public getUserName() {
+
+
+    return this.displayName;
+  }
+
+  public getProfilePicUrl() {
+    return this.photoURL;
   }
 }

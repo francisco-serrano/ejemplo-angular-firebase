@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth, User} from 'firebase';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -8,32 +10,43 @@ import {AuthService} from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  user = AuthService.getUser();
-  isLoggedIn: boolean;
+  private user: User;
 
-  constructor(private authService: AuthService) {
+  displayName: Promise<string>;
+  photoURL: Promise<string>;
+
+  constructor(
+    private angularFireAuth: AngularFireAuth,
+    private toastr: ToastrService
+  ) {
+    this.angularFireAuth.authState.subscribe(user => {
+      if (user) {
+        this.user = user;
+        this.displayName = Promise.resolve(user.displayName);
+        this.photoURL = Promise.resolve(user.photoURL);
+
+        this.toastr.success('We saved these books for you', 'Welcome back ' + this.user.displayName + '!', {
+          timeOut: 3000
+        });
+      }
+    });
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.user !== null;
-
-    console.log('Usuario: ', this.user);
-    console.log('isLoggedIn: ', this.isLoggedIn);
   }
 
-  onLoginWithGoogle() {
-    this.authService.loginWithGoogle().then(response => {
-      console.log('Inició sesión');
-      console.log(response);
-
-      this.isLoggedIn = true;
-    });
+  public async onLoginWithGoogle() {
+    return this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-  onLogout() {
-    this.authService.logout().then(() => {
-      this.isLoggedIn = false;
-      console.log('Logged Out');
+  public async onLogout() {
+    this.toastr.success('See you soon!', 'Good bye ' + this.user.displayName, {
+      timeOut: 3000
     });
+
+    this.displayName = Promise.reject();
+    this.photoURL = Promise.reject();
+
+    return this.angularFireAuth.auth.signOut();
   }
 }

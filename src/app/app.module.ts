@@ -26,6 +26,9 @@ import { LoginComponent } from './components/login/login.component';
 import {AuthService} from './services/auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 
+// Material Modules
+import {MatToolbarModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatToolbarModule
   ],
   providers: [
     ProductService,

@@ -1,6 +1,11 @@
-<p *ngIf="isLoggedIn">
-  Usuario {{user.displayName}}
-</p>
+<mat-toolbar color="dark-primary-color">
+  <span>JEJEJEJEJE</span>
+</mat-toolbar>
+
+<div>
+  <p>Usuario {{displayName | async}}</p>
+</div>
+<img [src]="photoURL | async">
 
 <button (click)="onLoginWithGoogle()">
   LOGIN WITH GOOGLE
@@ -9,5 +14,4 @@
 <button (click)="onLogout()">
   LOGOUT
 </button>
-
 
