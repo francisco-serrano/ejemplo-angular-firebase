@@ -22,13 +22,17 @@ import {ProductListComponent} from './components/products/product-list/product-l
 
 // Services
 import {ProductService} from './services/product.service';
+import { LoginComponent } from './components/login/login.component';
+import {AuthService} from './services/auth.service';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import {ProductService} from './services/product.service';
     ToastrModule.forRoot()
   ],
   providers: [
-    ProductService
+    ProductService,
+    AuthService,
+    AngularFireAuth
   ],
   bootstrap: [AppComponent]
 })
