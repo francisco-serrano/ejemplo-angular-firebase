@@ -22,12 +22,14 @@ import {ProductListComponent} from './components/products/product-list/product-l
 
 // Services
 import {ProductService} from './services/product.service';
-import { LoginComponent } from './components/login/login.component';
+import {LoginComponent} from './components/login/login.component';
 import {AuthService} from './services/auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 
 // Material Modules
 import {MatToolbarModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {MatToolbarModule} from '@angular/material';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     ProductService,
