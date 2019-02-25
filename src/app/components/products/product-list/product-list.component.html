@@ -21,29 +21,14 @@
     </td>
   </ng-container>
 
+  <!-- Disclaimer column -->
+  <ng-container matColumnDef="disclaimer">
+    <td mat-footer-cell *matFooterCellDef colspan="3" style="color: #900000">
+      AVISO: Los datos mostrados se actualizan en tiempo real, reflejando la modificación instantáneamente
+    </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="['disclaimer']"></tr>
 </table>
-
-<!--<div class="card">-->
-  <!--<div class="card-body">-->
-    <!--<h6 class="text-center">List of Products</h6>-->
-
-    <!--<table class="table table-sm table-hover">-->
-      <!--<tbody>-->
-        <!--<tr *ngFor="let product of productList">-->
-          <!--<td>{{product.name}}</td>-->
-          <!--<td>{{product.category}}</td>-->
-          <!--<td>-->
-            <!--<a class="btn btn-secondary text-white" (click)="onEdit(product)">-->
-              <!--<i class="far fa-edit"></i>-->
-            <!--</a>-->
-            <!--<a class="btn btn-danger text-white" (click)="onDelete(product.$key)">-->
-              <!--<i class="fas fa-trash-alt"></i>-->
-            <!--</a>-->
-          <!--</td>-->
-        <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-  <!--</div>-->
-<!--</div>-->
