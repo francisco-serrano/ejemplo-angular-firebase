@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   private user: User;
 
+  estaLogueado: boolean;
+
   displayName: Promise<string>;
   photoURL: Promise<string>;
 
@@ -25,8 +27,12 @@ export class LoginComponent implements OnInit {
         this.displayName = Promise.resolve(user.displayName);
         this.photoURL = Promise.resolve(user.photoURL);
 
+        this.estaLogueado = true;
+
+        console.log(user);
+
         this.toastr.success('We saved these books for you', 'Welcome back ' + this.user.displayName + '!', {
-          timeOut: 3000
+          timeOut: 2000
         });
       }
     });
@@ -41,11 +47,13 @@ export class LoginComponent implements OnInit {
 
   public async onLogout() {
     this.toastr.success('See you soon!', 'Good bye ' + this.user.displayName, {
-      timeOut: 3000
+      timeOut: 2000
     });
 
     this.displayName = Promise.reject();
     this.photoURL = Promise.reject();
+
+    this.estaLogueado = false;
 
     return this.angularFireAuth.auth.signOut();
   }

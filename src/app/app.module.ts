@@ -30,6 +30,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {MatToolbarModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatButtonModule} from '@angular/material';
     ToastrModule.forRoot(),
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     ProductService,

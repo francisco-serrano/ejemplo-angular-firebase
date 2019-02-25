@@ -1,17 +1,29 @@
 <mat-toolbar color="primary">
-  <span>Ejemplo CRUD Angular - Firebase</span>
+  <span>CRUD Angular - Firebase</span>
+
+  <span class="spacer"></span>
+
+  <span style="font-size: smaller; font-weight: normal; margin-right: 1%">
+    {{displayName | async}}
+  </span>
+
+  <img *ngIf="estaLogueado" [src]="photoURL | async" style="border-radius: 50%; width: 5%; height: auto;">
+
+  <button *ngIf="!estaLogueado" mat-button (click)="onLoginWithGoogle()">
+    LOGIN
+  </button>
+
+  <button *ngIf="estaLogueado" mat-button (click)="onLogout()">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
 </mat-toolbar>
 
-<div>
-  <p>Usuario {{displayName | async}}</p>
-</div>
-<img [src]="photoURL | async">
 
-<button (click)="onLoginWithGoogle()">
-  LOGIN WITH GOOGLE
-</button>
 
-<button (click)="onLogout()">
-  LOGOUT
-</button>
+
+
+
+
+
+
 
