@@ -1,55 +1,54 @@
 <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
   <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
-  <div class="form-group">
-    <input
+
+  <mat-form-field>
+    <input matInput
       type="text"
-      class="form-control"
       name="name"
       #name="ngModel"
       [(ngModel)]="productService.selectedProduct.name"
       placeholder="Add Product Name"
     >
-  </div>
+  </mat-form-field>
 
-  <div class="form-group">
-    <input
+  <mat-form-field>
+    <input matInput
       type="text"
-      class="form-control"
       name="category"
       #category="ngModel"
       [(ngModel)]="productService.selectedProduct.category"
       placeholder="Add Product Category"
     >
-  </div>
+  </mat-form-field>
 
-  <div class="form-group">
-    <input
+  <mat-form-field>
+    <input matInput
       type="text"
-      class="form-control"
       name="location"
       #location="ngModel"
       [(ngModel)]="productService.selectedProduct.location"
       placeholder="Add Product Location"
     >
-  </div>
+  </mat-form-field>
 
-  <div class="form-group">
-    <input
+  <mat-form-field>
+    <input matInput
       type="text"
-      class="form-control"
       name="price"
       #price="ngModel"
       [(ngModel)]="productService.selectedProduct.price"
       placeholder="Add Product Price"
     >
-  </div>
+  </mat-form-field>
 
-  <div>
-    <button mat-raised-button type="submit" style="margin-right: 1%">
-      <i class="fas fa-plus-circle"></i> Add Product
+  <div style="margin-top: 2%">
+    <button mat-raised-button color="primary" type="submit" style="margin-right: 1%">
+      Add Product
+      <i class="fas fa-plus-circle"></i>
     </button>
-    <button mat-raised-button type="reset" (click)="resetForm(productForm)">
-      <i class="fas fa-sync-alt"></i> Reset
+    <button mat-raised-button color="primary" type="reset" (click)="resetForm(productForm)">
+      Reset
+      <i class="fas fa-sync-alt"></i>
     </button>
   </div>
 </form>

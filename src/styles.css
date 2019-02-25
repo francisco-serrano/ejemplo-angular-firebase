@@ -12,3 +12,13 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.user-icon {
+  border-radius: 50%;
+  width: 5%;
+  height: auto;
+}
+
+.mat-form-field {
+  width: 100%;
+}

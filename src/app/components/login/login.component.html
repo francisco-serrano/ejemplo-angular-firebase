@@ -7,7 +7,7 @@
     {{displayName | async}}
   </span>
 
-  <img *ngIf="estaLogueado" [src]="photoURL | async" style="border-radius: 50%; width: 5%; height: auto;">
+  <img *ngIf="estaLogueado" [src]="photoURL | async" class="user-icon">
 
   <button *ngIf="!estaLogueado" mat-button (click)="onLoginWithGoogle()">
     LOGIN

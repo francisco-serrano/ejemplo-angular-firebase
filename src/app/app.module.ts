@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 
@@ -31,6 +31,7 @@ import {MatToolbarModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -46,12 +47,14 @@ import {MatIconModule} from '@angular/material';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     ProductService,
