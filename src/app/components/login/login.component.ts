@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth, User} from 'firebase';
 import {ToastrService} from 'ngx-toastr';
+import {MatSnackBar} from '@angular/material';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private toastr: ToastrService
+    private notificationService: NotificationService
   ) {
     this.angularFireAuth.authState.subscribe(user => {
       if (user) {
@@ -31,9 +33,7 @@ export class LoginComponent implements OnInit {
 
         console.log(user);
 
-        this.toastr.success('We saved these books for you', 'Welcome back ' + this.user.displayName + '!', {
-          timeOut: 2000
-        });
+        this.notificationService.showSnackbar('Welcome back ' + this.user.displayName + '!');
       }
     });
   }
@@ -46,9 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   public async onLogout() {
-    this.toastr.success('See you soon!', 'Good bye ' + this.user.displayName, {
-      timeOut: 2000
-    });
+    this.notificationService.showSnackbar('Good Bye ' + this.user.displayName);
 
     this.displayName = Promise.reject();
     this.photoURL = Promise.reject();

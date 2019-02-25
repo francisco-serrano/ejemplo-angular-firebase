@@ -3,6 +3,7 @@ import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/product';
 import {ToastrService} from 'ngx-toastr';
 import {MatTableDataSource} from '@angular/material';
+import {NotificationService} from '../../../services/notification.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private toastr: ToastrService
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -44,7 +45,7 @@ export class ProductListComponent implements OnInit {
   onDelete($key: string) {
     if (confirm('Are you sure you want to delete it?')) {
       this.productService.deleteProduct($key);
-      this.toastr.success('Successful Operation', 'Product Deleted');
+      this.notificationService.showSnackbar('Successful Operation: Product Deleted');
     }
   }
 }

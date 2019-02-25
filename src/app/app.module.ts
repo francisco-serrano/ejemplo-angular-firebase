@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToastrModule} from 'ngx-toastr';
 
 // Firebase
 import {AngularFireModule} from '@angular/fire';
@@ -23,7 +22,7 @@ import {ProductListComponent} from './components/products/product-list/product-l
 // Services
 import {ProductService} from './services/product.service';
 import {LoginComponent} from './components/login/login.component';
-import {AuthService} from './services/auth.service';
+import {NotificationService} from './services/notification.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 
 // Material Modules
@@ -33,6 +32,8 @@ import {MatButtonModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatTableModule} from '@angular/material';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -50,17 +51,17 @@ import {MatTableModule} from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   providers: [
     ProductService,
-    AuthService,
+    NotificationService,
     AngularFireAuth
   ],
   bootstrap: [AppComponent]

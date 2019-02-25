@@ -3,6 +3,7 @@ import {ProductService} from '../../../services/product.service';
 import {NgForm} from '@angular/forms';
 import {Product} from '../../../models/product';
 import {ToastrService} from 'ngx-toastr';
+import {NotificationService} from '../../../services/notification.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    private toastr: ToastrService
+    private notificationService: NotificationService
   ) {
   }
 
@@ -29,7 +30,7 @@ export class ProductComponent implements OnInit {
       this.productService.updateProduct(productForm.value);
 
     this.resetForm(productForm);
-    this.toastr.success('Successful Operation', 'Successful Operation');
+    this.notificationService.showSnackbar('Successful Operation');
   }
 
   resetForm(productForm?: NgForm) {
