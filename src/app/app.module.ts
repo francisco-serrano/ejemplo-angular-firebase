@@ -32,6 +32,7 @@ import {MatCardModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
+import {MatTableModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatInputModule} from '@angular/material';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     ProductService,
